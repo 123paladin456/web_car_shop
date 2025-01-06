@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{car.brend}} {{car.model}}</title>
+    <style>
+        /* Общие стили для страницы */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .car-image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Контейнер для информации о машине */
+        .car-info {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .car-info p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        .car-info strong {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .price {
+            font-size: 1.5em;
+            color: #e74c3c;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .fuel, .transmission {
+            font-size: 1.1em;
+        }
+
+        /* Кнопка "Купить" */
+        .buy-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px 30px;
+            border-radius: 5px;
+            margin: 20px auto;
+            width: 200px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .buy-button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Стиль для фона и оформления кнопки */
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        .price {
+            font-size: 1.8em;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            color: #3498db;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .car-info {
+                padding: 15px;
+            }
+
+            .car-image {
+                width: 90%;
+            }
+
+            .price {
+                font-size: 1.4em;
+            }
+
+            h2 {
+                font-size: 1.6em;
+            }
+
+            .buy-button {
+                width: 180px;
+                padding: 12px 24px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>{{car.brend}} {{car.model}}</h2>
+        <div class="car-info">
+            <img src="{{ car.image.url }}" alt="{{ car.brend }} {{ car.model }}" class="car-image">
+            <p>{{ car.description }}</p>
+            <p><strong>Год:</strong> {{ car.date }}</p>
+            <p class="fuel"><strong>Топливо:</strong> {{ car.get_fuel_display }}</p>
+            <p class="transmission"><strong>Трансмиссия:</strong> {{ car.get_trasmission_display }}</p>
+            <p class="price">₽ {{ car.price|floatformat:0 }}</p>
+
+            <!-- Кнопка "Купить" -->
+            <a href="#" class="buy-button">Купить</a>
+        </div>
+    </div>
+
+</body>
+</html>

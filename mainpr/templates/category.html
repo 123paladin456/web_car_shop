@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{brend.name}}</title>
+    <style>
+        /* Общие стили страницы */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        /* Контейнер для контента */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        /* Заголовки */
+        h2 {
+            font-size: 26px;
+            color: #333;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+
+        /* Параграфы */
+        p {
+            font-size: 18px;
+            color: #555;
+            margin: 8px 0;
+        }
+
+        /* Стиль для изображений автомобилей */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        /* Кнопка "Назад" */
+        a.back-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            background-color: #007bff;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        a.back-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* Кнопка "Купить" */
+        a.buy-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background-color: #ff3333;
+            color: white;
+            font-size: 26px;
+            font-weight: bold;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(255, 51, 51, 0.3);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        a.buy-button:hover {
+            background-color: #cc2929;
+            transform: scale(1.1);
+        }
+
+        /* Стили для каждого автомобиля */
+        .car-info {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .car-info p {
+            margin-bottom: 10px;
+        }
+
+        /* Дополнительный стиль для адаптивности */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            .buy-button {
+                font-size: 22px;
+                padding: 15px 30px;
+            }
+
+            a.back-button {
+                padding: 10px 15px;
+                font-size: 16px;
+            }
+
+            .car-info {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Основной контейнер для контента -->
+    <div class="container">
+        <!-- Кнопка "Назад" -->
+        <a href="/" class="back-button">Назад</a>
+
+        <!-- Вывод информации о машинах -->
+        {% for car in brends %}
+            <div class="car-info">
+                <h2>{{car.model}}</h2>
+                <p><strong>Бренд:</strong> {{car.brend}}</p>
+                <p><strong>Цена:</strong> {{car.price}}₽</p>
+                <p><strong>Тип топлива:</strong> {{car.fuel}}</p>
+                <p><strong>Дата выпуска:</strong> {{car.date}}</p>
+                <p><strong>Трансмиссия:</strong> {{car.trasmission}}</p>
+                <img src="{{car.image.url}}" alt="{{car.model}}">
+                <a href="#" class="buy-button">Купить</a>
+            </div>
+        {% endfor %}
+
+        <!-- Кнопка "Купить" -->
+    </div>
+
+    <script>
+        // Пример простого функционала для кнопки "Купить"
+        document.querySelector('.buy-button').addEventListener('click', function() {
+            alert("Покупка не доступна в демонстрационном режиме.");
+        });
+    </script>
+</body>
+</html>

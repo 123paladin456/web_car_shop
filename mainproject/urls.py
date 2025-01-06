@@ -23,6 +23,9 @@ from mainpr import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", views.home),
+    path("wrong/", views.detail),
+    path("brand/<int:brand_id>", views.category),
+    path("<str:now_car>", views.detail),
 ]
 
 
